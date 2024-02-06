@@ -1,0 +1,389 @@
+@import url('https://fonts.googleapis.com/css2?family=Exo+2&family=Kanit&family=Roboto+Mono&family=Source+Code+Pro&display=swap');
+/*
+COLOR PALLETE
+#555555 - GRAY
+#FFFFFF
+#0598CE - LIGHT BLUE
+#113768 - MED BLUE
+#001A33 - DARK BLUE
+*/
+
+:root {
+  /*font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;*/
+  font-family: 'Exo 2', sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  color-scheme: light dark;
+  color: rgba(255, 255, 255, 0.87);
+  background-color: #242424;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  --primary-color: #3498db; /* Define a primary color */
+  --secondary-color: #2ecc71; /* Define a secondary color */
+  --accent-color: #e74c3c; /* Define an accent color */
+}
+
+a {
+  font-weight: 500;
+  color: #646cff;
+  text-decoration: inherit;
+}
+a:hover {
+  color: #535bf2;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+}
+
+h1 {
+  font-size: 3.2em;
+  line-height: 1.1;
+}
+
+button {
+  border-radius: 8px;
+  border: 1px solid transparent;
+  padding: 0.6em 1.2em;
+  font-size: 1em;
+  font-weight: 500;
+  font-family: inherit;
+  background-color: #1a1a1a;
+  cursor: pointer;
+  transition: border-color 0.25s;
+}
+button:hover {
+  border-color: #646cff;
+}
+button:focus,
+button:focus-visible {
+  outline: 4px auto -webkit-focus-ring-color;
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    color: #213547;
+    background-color: #ffffff;
+  }
+  a:hover {
+    color: #747bff;
+  }
+  button {
+    background-color: #f9f9f9;
+  }
+}
+
+
+/* My CSS */
+
+.App {
+  /* layout */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 95vh;
+
+  /* style */
+  border-radius: 1rem;
+  
+}
+
+/* Top Navbar */
+.nav-top {
+  /* layout */
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+
+  /*style*/
+  padding: .5rem 0;
+
+  /* dev */
+  background-color: rgb(78, 26, 131);
+}
+
+.nav-top-middle {
+  justify-self: center;
+}
+
+.nav-top-middle h2 {
+  margin: 0;
+}
+
+.nav-top-left, .nav-top-middle .nav-top-right {
+  width: 5rem;
+}
+
+.nav-top-icon {
+  margin-right: .8em;
+  margin-top: .3rem;
+  font-size: larger;
+}
+
+.nav-top-icon:hover {
+  cursor: pointer;
+}
+
+/* Game Container */
+.game {
+  /* layout */
+  display: flex;
+  flex-direction: column;
+  margin-top: 1rem;
+  width: 450px;
+
+  /* style */
+  border-radius: 1rem;
+  padding: .5rem 1rem;
+
+  /* dev */
+  background-color: #001A33
+}
+
+.game-row-2 {
+  /* layout */
+  display: flex;
+  justify-content: center;
+  margin-top: 1rem;
+  width: 450px;
+}
+
+.game-row-3 {
+  /* layout */
+  display: flex;
+  justify-content: center;
+  margin-top: 1rem;
+  width: 450px;
+}
+
+.game-column-1 {
+  margin-right: 1rem;
+}
+
+.game-column-2 {
+  width: 15rem;
+  background-color: #213547;
+  border-radius: .25rem;
+}
+
+/* Encryption */
+.encryption-container {
+  /*layout*/
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background-color: #555555;
+  border-radius: .25rem;
+}
+
+.encryption-container h4 {
+  margin: 1rem 0;
+  margin-right: .04rem;
+  font-size: x-large;
+  font-family: 'Roboto Mono', monospace;
+}
+
+/* Swap Input */
+.swap-container {
+  /*layout*/
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 1rem;
+
+  /*style */
+  padding: 1.5rem 1rem;
+}
+
+.swap-0, .swap-1 {
+  /* layout */
+  display: flex;
+  align-items: center; /* Aligns vertically center */
+  justify-content: center; /* Aligns horizontally center, if needed */
+  height: 5rem;
+  width: 4rem;
+
+  /* style */
+  font-size: 5rem;
+  padding: .5rem .8rem;
+  border-radius: .25rem;
+
+  /* dev */
+  background-color: #0598ce;
+}
+
+.swap-0 p, .swap-1 p {
+  padding-bottom: 10px;
+}
+
+.swap-0, .swap-arrow-icon {
+  /*layout */
+  margin-right: .9rem;
+}
+
+.swap-arrow-icon {
+  font-size: x-large;
+}
+
+/* Phrase Input */
+.phrase-input-container {
+  /*layout*/
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  
+  /*style */
+  padding: 0 1rem;
+  padding-bottom: 1rem;
+
+  background-color: #213547;
+  border-radius: .25rem;
+}
+
+.phrase-input-word {
+   /*layout*/
+   display: flex;
+   margin-right: .75rem;
+}
+
+.phrase-input-blocks {
+  /*layout*/
+  display: flex;
+  align-items: center; /* Aligns vertically center */
+  justify-content: center; /* Aligns horizontally center, if needed */
+  height: 35px;
+  width: 35px;
+  margin-top: 1rem;
+
+  /*style*/
+  border: gray 1px solid;
+  border-radius: .25rem;
+}
+
+.phrase-input-blocks p {
+  font-size: 1.6rem;
+  padding-bottom: 2px;
+}
+
+/* Guesses */
+.guess-container {
+  /*layout*/
+  display: flex;
+  flex-direction: column;  
+  width: 100%;
+}
+
+.guess-container h3, .guess {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.guess-container h3 {
+  margin: .5rem 0;
+}
+
+.guess {
+  margin-top: .75rem;
+}
+
+.guess p, .guess-arrow-icon {
+  margin: .3rem 0;
+  margin-right: .2rem;
+}
+
+.guess p:last-child {
+  margin-right: 0;
+}
+
+.guess-arrow-icon {
+  font-size: .75rem;
+}
+
+.correct-guess {
+  background-color: #39ff14;
+}
+
+.incorrect-guess {
+  background-color: #f55;
+}
+
+.phrase p{
+  font-size: .65rem;
+}
+
+/* Letter Historgram */
+.histogram-container {
+  display: flex;
+  justify-content: center;
+  width: 75%;
+  min-height: 5rem;
+  margin-right: 1rem;
+
+  /*style*/
+  padding: .5rem 0;
+  border-radius: .25rem;
+  
+}
+
+.histogram-letter {
+  display: flex;
+  flex-direction: column-reverse;
+  align-items: center;
+  margin-right: 1rem;
+
+  /*style*/
+  font-size: 1.2rem;
+  font-family: 'Roboto Mono', monospace;
+}
+
+/* Plays Remaining */
+.plays-remaining-container {
+  /*layout*/
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 13rem;
+
+  background-color: #213547;
+  border-radius: .25rem;
+}
+
+.plays-remaining-container p {
+  margin: 0;
+}
+
+.plays-remaining-container h2 {
+  margin: 0;
+  font-size: 4rem;
+  
+}
+
+
+/* animation stuff */
+.box {
+  border: 1px solid gray; /* Initial border color */
+  margin: 2px;
+  /* Smooth transition for border color */
+  transition: border-color 0.1s ease;
+}
+
+.animate {
+  border-color: white; /* Animate to white border */
+}
+
+.no-animate {
+  border-color: gray; /* Back to gray without animation */
+  transition: none; /* Remove transition to disable animation */
+}
