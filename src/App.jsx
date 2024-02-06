@@ -10,10 +10,63 @@ import Navbar from './components/Navbar'
 
 function App() {
 
+  const [phraseData, setPhraseData] = useState(null)
+  const [secretPhrase, setSecretPhrase] = useState('hello')
+  const [correctSwaps, setCorrectSwaps ] = useState([
+    [
+      "h",
+      "d"
+    ],
+    [
+      "e",
+      "i"
+    ],
+    [
+      "l",
+      "w"
+    ],
+    [
+      "o",
+      "x"
+    ],
+    [
+      "w",
+      "o"
+    ],
+    [
+      "r",
+      "q"
+    ],
+    [
+      "d",
+      "l"
+    ]
+  ])
+  const [encrypt, setEncrypt] = useState("diwwx oxqwl")
+
+  useEffect(() => {
+    async function fetchData() {
+      try {
+        const res = await fetch('/api/getDailyPhrase');
+        if (!res.ok) {
+          throw new Error(`Network response was not ok: ${response.statusText}`);
+        }
+        const data = await res.json();
+        setPhraseData(data);
+        console.log("data",data)
+        setEncrypt(data.encrypted)
+        setSecretPhrase(data.original)
+        setCorrectSwaps(data.mappings)
+        
+      } catch (error) {
+        console.error('Error fetching daily phrase:', error);
+      }
+    }
+    
+    fetchData();
+  }, []);
+
   // CAN BE PRE-PROCESSED
-  const [secretPhrase] = useState('This is a secret')
-  const [correctSwaps ] = useState([["o","t"],["a","h"],["r","i"],["p","a"],["i","s"],["w","e"],["t","c"],["q","r"]])
-  const [encrypt, setEncrypt] = useState('oari ri p iwtqwo')
   const [encryptNoSpaces] = useState(encrypt.split('').filter((item) => item !== " "))
   const [encryptIndex, setEncryptIndex ] = useState(new Array(encrypt.length).fill(null))
   const [secretPhraseNoSpaces] = useState(secretPhrase.split('').filter((item) => item !== " "))
