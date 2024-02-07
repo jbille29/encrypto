@@ -17,15 +17,17 @@ COLOR PALLETE
   color-scheme: light dark;
   color: rgba(255, 255, 255, 0.87);
   background-color: #242424;
+  background-image: linear-gradient(to top, #242424, #313131);
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 
-  --primary-color: #3498db; /* Define a primary color */
-  --secondary-color: #2ecc71; /* Define a secondary color */
-  --accent-color: #e74c3c; /* Define an accent color */
+  --darkest: #1F2544;
+  --dark:#474574;
+  --medium: #81689D;
+  --light: #FFD0EC;
 }
 
 a {
@@ -106,8 +108,9 @@ button:focus-visible {
   /*style*/
   padding: .5rem 0;
 
-  /* dev */
-  background-color: rgb(78, 26, 131);
+  background-color: var(--dark);
+  background-image: linear-gradient(to right, #745e8d, #81689d);
+  box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.5);
 }
 
 .nav-top-middle {
@@ -143,9 +146,9 @@ button:focus-visible {
   /* style */
   border-radius: 1rem;
   padding: .5rem 1rem;
+  background-color: var(--darkest);
+  box-shadow: 2px 2px 7px rgba(0, 0, 0, 0.5);
 
-  /* dev */
-  background-color: #001A33
 }
 
 .game-row-2 {
@@ -170,7 +173,7 @@ button:focus-visible {
 
 .game-column-2 {
   width: 15rem;
-  background-color: #213547;
+  background-color: var(--dark);
   border-radius: .25rem;
 }
 
@@ -181,7 +184,7 @@ button:focus-visible {
   justify-content: center;
   align-items: center;
 
-  background-color: #555555;
+  background-color: var(--darkest);
   border-radius: .25rem;
 }
 
@@ -218,7 +221,7 @@ button:focus-visible {
   border-radius: .25rem;
 
   /* dev */
-  background-color: #0598ce;
+  background-color: var(--medium);
 }
 
 .swap-0 p, .swap-1 p {
@@ -246,7 +249,6 @@ button:focus-visible {
   padding: 0 1rem;
   padding-bottom: 1rem;
 
-  background-color: #213547;
   border-radius: .25rem;
 }
 
@@ -266,7 +268,7 @@ button:focus-visible {
   margin-top: 1rem;
 
   /*style*/
-  border: gray 1px solid;
+  border: var(--medium) 1px solid;
   border-radius: .25rem;
 }
 
@@ -356,7 +358,7 @@ button:focus-visible {
   justify-content: center;
   width: 13rem;
 
-  background-color: #213547;
+  
   border-radius: .25rem;
 }
 
@@ -380,11 +382,11 @@ button:focus-visible {
 }
 
 .animate {
-  border-color: white; /* Animate to white border */
+  border-color: var(--light); /* Animate to white border */
 }
 
 .no-animate {
-  border-color: gray; /* Back to gray without animation */
+  border-color: var(--medium); /* Back to gray without animation */
   transition: none; /* Remove transition to disable animation */
 }
 
@@ -402,8 +404,8 @@ button:focus-visible {
 }
 
 .modal-content {
-  background-color: white;
-  color: black;
+  background-color: var(--darkest);
+  color: var(--light);
   padding: 20px;
   border-radius: 5px;
   position: relative;

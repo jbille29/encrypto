@@ -1,6 +1,5 @@
 import { useState, useEffect, useCallback } from 'react'
 
-
 import LetterHistogram from './components/LetterHistogram'
 import Encryption from './components/Encryption'
 import Swap from './components/Swap'
@@ -22,7 +21,6 @@ function App() {
   const [encryptIndex, setEncryptIndex ] = useState([])
   const [secretPhraseNoSpaces, setSecretPhraseNoSpaces] = useState([])
   
-  
   const [selectedInput, setSelectedInput] = useState('swap')
   const [phraseInput, setPhraseInput] = useState([])
   const [phraseIndex, setPhraseIndex] = useState(0)
@@ -33,7 +31,7 @@ function App() {
     gameOver: false,
     guessedPhrase: false,
   });
-  const [playsRemaining, setPlaysRemaining] = useState(8)
+  const [playsRemaining, setPlaysRemaining] = useState(3)
 
   useEffect(() => {
     async function fetchData() {
@@ -66,7 +64,7 @@ function App() {
 
   const handleKeyboard = useCallback(
     (event) => {
-      //ffdif (gameOver.gameOver) return;
+      if (gameState.gameOver) return;
       if (event.key === "Enter") {
         if(selectedInput === 'swap') { 
           onEnterSwap()
@@ -129,6 +127,7 @@ function App() {
         ...prevGameState,
         gameOver: true
       }))
+      setIsModalOpen(true)
     }
     setPlaysRemaining(playsRemaining - 1)
 
@@ -188,6 +187,7 @@ function App() {
         ...prevGameState,
         gameOver: true
       }))
+      setIsModalOpen(true)
     }
     setPlaysRemaining(playsRemaining - 1)
     setSwapInput(["",""])
