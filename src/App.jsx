@@ -7,42 +7,33 @@ import Swap from './components/Swap'
 import PhraseInput from './components/PhraseInput'
 import Guesses from './components/Guesses'
 import Navbar from './components/Navbar'
+import Modal from './components/Modal'
 
 function App() {
 
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
   const [phraseData, setPhraseData] = useState(null)
-  const [secretPhrase, setSecretPhrase] = useState('hello')
-  const [correctSwaps, setCorrectSwaps ] = useState([
-    [
-      "h",
-      "d"
-    ],
-    [
-      "e",
-      "i"
-    ],
-    [
-      "l",
-      "w"
-    ],
-    [
-      "o",
-      "x"
-    ],
-    [
-      "w",
-      "o"
-    ],
-    [
-      "r",
-      "q"
-    ],
-    [
-      "d",
-      "l"
-    ]
-  ])
-  const [encrypt, setEncrypt] = useState("diwwx oxqwl")
+  const [secretPhrase, setSecretPhrase] = useState('')
+  const [correctSwaps, setCorrectSwaps ] = useState([[]])
+  const [encrypt, setEncrypt] = useState('')
+
+  const [encryptNoSpaces, setEncryptNoSpaces] = useState("")
+  const [encryptIndex, setEncryptIndex ] = useState([])
+  const [secretPhraseNoSpaces, setSecretPhraseNoSpaces] = useState([])
+  
+  
+  const [selectedInput, setSelectedInput] = useState('swap')
+  const [phraseInput, setPhraseInput] = useState([])
+  const [phraseIndex, setPhraseIndex] = useState(0)
+  const [swapInput, setSwapInput] = useState(["",""])
+  const [swapIndex, setSwapIndex] = useState(0)
+  const [guesses, setGuesses] = useState([]) 
+  const [gameState, setGameState] = useState({
+    gameOver: false,
+    guessedPhrase: false,
+  });
+  const [playsRemaining, setPlaysRemaining] = useState(8)
 
   useEffect(() => {
     async function fetchData() {
@@ -53,10 +44,15 @@ function App() {
         }
         const data = await res.json();
         setPhraseData(data);
-        console.log("data",data)
         setEncrypt(data.encrypted)
         setSecretPhrase(data.original)
         setCorrectSwaps(data.mappings)
+
+        setEncryptNoSpaces(data.encrypted.split('').filter((item) => item !== " "))
+        setEncryptIndex(new Array(data.encrypted.length).fill(null))
+        const noSpaces = data.original.split('').filter((item) => item !== " ")
+        setSecretPhraseNoSpaces(noSpaces)
+        setPhraseInput(new Array(noSpaces.length).fill(''))
         
       } catch (error) {
         console.error('Error fetching daily phrase:', error);
@@ -65,27 +61,6 @@ function App() {
     
     fetchData();
   }, []);
-
-  // CAN BE PRE-PROCESSED
-  const [encryptNoSpaces] = useState(encrypt.split('').filter((item) => item !== " "))
-  const [encryptIndex, setEncryptIndex ] = useState(new Array(encrypt.length).fill(null))
-  const [secretPhraseNoSpaces] = useState(secretPhrase.split('').filter((item) => item !== " "))
-  
-  
-  const [selectedInput, setSelectedInput] = useState('swap')
-  const [phraseInput, setPhraseInput] = useState(new Array(secretPhraseNoSpaces.length).fill(''))
-  const [phraseIndex, setPhraseIndex] = useState(0)
-  const [swapInput, setSwapInput] = useState(["",""])
-  const [swapIndex, setSwapIndex] = useState(0)
-  const [guesses, setGuesses] = useState([]) // {  correct: boolean, phrase: ""||null, swap: ["",""]||null}
-  const [gameState, setGameState] = useState({
-    gameOver: false,
-    guessedPhrase: false,
-  });
-  const [playsRemaining, setPlaysRemaining] = useState(8)
-
-  // handle keyboard input
-  // is selected -> so it only goes to one div
 
   const keys = ["Q", "W", "E", "R", "T", "Y", "U", "I", "O", "P", "A", "S", "D", "F", "G", "H", "J", "K", "L", "Z", "X", "C", "V", "B", "N", "M"];
 
@@ -276,6 +251,10 @@ function App() {
     setSwapIndex(swapIndex + 1)
   }
 
+  const toggleModal = () => {
+    setIsModalOpen(!isModalOpen);
+  };
+
   useEffect(() => {
     document.addEventListener("keydown", handleKeyboard);
 
@@ -284,56 +263,61 @@ function App() {
     };
   }, [handleKeyboard]);
 
-  useEffect(()=> {
-    console.log(guesses)
-  }, [phraseIndex, guesses])
-
   return (
     <div className='App'>
       
       <Navbar />
-    
-      <div className="game">
-        <div className='game-row-1'>
-        <Encryption
-            encrypt={encrypt}
-            encryptIndex={encryptIndex}
-        />
-        </div>
-        <div className="game-row-2">
-          <div className="game-column-1">
-            
-            <Swap 
-              selectedInput={selectedInput}
-              setSelectedInput={setSelectedInput}
-              swapInput={swapInput}
-            />
-            <PhraseInput 
-              selectedInput={selectedInput}
-              setSelectedInput={setSelectedInput}
-              secretPhrase={secretPhrase} 
-              phraseInput={phraseInput}  
-            />
-            
+      {phraseData ? (
+        <div className="game">
+          <div className='game-row-1'>
+          <Encryption
+              encrypt={encrypt}
+              encryptIndex={encryptIndex}
+          />
           </div>
-          <div className="game-column-2">
-            <Guesses 
-              guesses={guesses}
-            />
-          </div>   
-        </div>
-        <div className="game-row-3">
-          <LetterHistogram 
-            encrypt={encrypt}
-          /> 
-          <div className='plays-remaining-container'>
-            <p>Plays Remaining:</p>
-            <h2>{playsRemaining}</h2>
+          <div className="game-row-2">
+            <div className="game-column-1">
+              
+              <Swap 
+                selectedInput={selectedInput}
+                setSelectedInput={setSelectedInput}
+                swapInput={swapInput}
+              />
+              <PhraseInput 
+                selectedInput={selectedInput}
+                setSelectedInput={setSelectedInput}
+                secretPhrase={secretPhrase} 
+                phraseInput={phraseInput}  
+              />
+              
+            </div>
+            <div className="game-column-2">
+              <Guesses 
+                guesses={guesses}
+              />
+            </div>   
           </div>
+          <div className="game-row-3">
+            <LetterHistogram 
+              encrypt={encrypt}
+            /> 
+            <div className='plays-remaining-container'>
+              <p>Plays Remaining:</p>
+              <h2>{playsRemaining}</h2>
+            </div>
+          </div>
+          
+          
         </div>
-        
-        
+      ) : (
+        <p>Loading...</p>
+      )}
+
+      <div>
+        <button onClick={toggleModal}>Open Modal</button>
+        <Modal isOpen={isModalOpen} toggleModal={toggleModal} />
       </div>
+      
 
       {gameState.gameOver && (
         <div className='game-over'>
