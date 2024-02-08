@@ -141,7 +141,7 @@ button:focus-visible {
   display: flex;
   flex-direction: column;
   margin-top: 1rem;
-  width: 450px;
+  width: 550px;
 
   /* style */
   border-radius: 1rem;
@@ -156,7 +156,6 @@ button:focus-visible {
   display: flex;
   justify-content: center;
   margin-top: 1rem;
-  width: 450px;
 }
 
 .game-row-3 {
@@ -164,7 +163,6 @@ button:focus-visible {
   display: flex;
   justify-content: center;
   margin-top: 1rem;
-  width: 450px;
 }
 
 .game-column-1 {
@@ -246,16 +244,19 @@ button:focus-visible {
   flex-wrap: wrap;
   
   /*style */
-  padding: 0 1rem;
+  padding-left: 1rem;
   padding-bottom: 1rem;
+  padding-top: .8rem;
 
   border-radius: .25rem;
+  background-color: red;
 }
 
 .phrase-input-word {
    /*layout*/
    display: flex;
-   margin-right: .75rem;
+   margin-right: 1rem;
+   margin-top: .2rem;
 }
 
 .phrase-input-blocks {
@@ -265,7 +266,6 @@ button:focus-visible {
   justify-content: center; /* Aligns horizontally center, if needed */
   height: 35px;
   width: 35px;
-  margin-top: 1rem;
 
   /*style*/
   border: var(--medium) 1px solid;
@@ -282,7 +282,7 @@ button:focus-visible {
   /*layout*/
   display: flex;
   flex-direction: column;  
-  width: 100%;
+  width: 7rem;
 }
 
 .guess-container h3, .guess {
@@ -327,15 +327,19 @@ button:focus-visible {
 /* Letter Historgram */
 .histogram-container {
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
+  flex-wrap: wrap;
   width: 75%;
   min-height: 5rem;
   margin-right: 1rem;
 
   /*style*/
-  padding: .5rem 0;
+  padding-top: .5rem;
+  padding-left: 1rem;
   border-radius: .25rem;
-  
+
+  /*dev*/
+  background-color: #535bf2;
 }
 
 .histogram-letter {
@@ -343,6 +347,7 @@ button:focus-visible {
   flex-direction: column-reverse;
   align-items: center;
   margin-right: 1rem;
+  margin-bottom: .5rem;
 
   /*style*/
   font-size: 1.2rem;
@@ -355,11 +360,13 @@ button:focus-visible {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  width: 13rem;
-
   
+  justify-content: center;
+
   border-radius: .25rem;
+
+  /*dev*/
+  background-color: #474574;
 }
 
 .plays-remaining-container p {
@@ -368,8 +375,7 @@ button:focus-visible {
 
 .plays-remaining-container h2 {
   margin: 0;
-  font-size: 4rem;
-  
+  font-size: 3rem;
 }
 
 
@@ -420,3 +426,29 @@ button:focus-visible {
   font-size: 25px;
   cursor: pointer;
 }
+
+/* Loader */
+.loader {
+  width: 8px;
+  height: 48px;
+  display: block;
+  margin: auto;
+  left: -20px;
+  position: relative;
+  border-radius: 4px;
+  box-sizing: border-box;
+  animation: animloader 1s linear infinite alternate;
+}
+
+@keyframes animloader {
+  0% {
+    box-shadow: 20px 0 rgba(255, 255, 255, 0.25), 40px 0 white, 60px 0 white;
+  }
+  50% {
+    box-shadow: 20px 0 white, 40px 0 rgba(255, 255, 255, 0.25), 60px 0 white;
+  }
+  100% {
+    box-shadow: 20px 0 white, 40px 0 white, 60px 0 rgba(255, 255, 255, 0.25);
+  }
+}
+    

@@ -10,6 +10,9 @@ import Modal from './components/Modal'
 
 function App() {
 
+  const phrases = ['A penny saved is a penny earned', 'The early bird catches the worm', 'Actions speak louder than words', 'A stitch in time saves nine', 'Fortune favors the bold', 'When in Rome, do as the Romans', 'The pen is mightier than the sword', 'No man is an island', 'Hope springs eternal', 'Necessity is the mother of invention'];
+
+
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const [phraseData, setPhraseData] = useState(null)
@@ -252,7 +255,19 @@ function App() {
   }
 
   const toggleModal = () => {
-    setIsModalOpen(!isModalOpen);
+
+    const randNum = Math.floor(Math.random()*phrases.length)
+
+    setEncrypt(phrases[randNum])
+    setSecretPhrase(phrases[randNum])
+    
+    setEncryptNoSpaces(phrases[randNum].split('').filter((item) => item !== " "))
+    setEncryptIndex(new Array(phrases[randNum].length).fill(null))
+    const noSpaces = phrases[randNum].split('').filter((item) => item !== " ")
+    setSecretPhraseNoSpaces(noSpaces)
+    setPhraseInput(new Array(noSpaces.length).fill(''))
+
+    //setIsModalOpen(!isModalOpen);
   };
 
   useEffect(() => {
@@ -270,11 +285,12 @@ function App() {
       {phraseData ? (
         <div className="game">
           <div className='game-row-1'>
-          <Encryption
-              encrypt={encrypt}
-              encryptIndex={encryptIndex}
-          />
+            <Encryption
+                encrypt={encrypt}
+                encryptIndex={encryptIndex}
+            />
           </div>
+
           <div className="game-row-2">
             <div className="game-column-1">
               
@@ -297,20 +313,21 @@ function App() {
               />
             </div>   
           </div>
+
           <div className="game-row-3">
             <LetterHistogram 
               encrypt={encrypt}
             /> 
             <div className='plays-remaining-container'>
-              <p>Plays Remaining:</p>
-              <h2>{playsRemaining}</h2>
+              <p>Remaining:</p>
+              <h2></h2>
             </div>
           </div>
           
           
         </div>
       ) : (
-        <p>Loading...</p>
+        <span className="loader"></span>
       )}
 
       <div>
