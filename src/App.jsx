@@ -10,10 +10,15 @@ import Modal from './components/Modal'
 
 function App() {
 
+  const keys1 = ["Q", "W", "E", "R", "T", "Y", "U", "I", "O", "P"];
+  const keys2 = ["A", "S", "D", "F", "G", "H", "J", "K", "L"];
+  const keys3 = ["Z", "X", "C", "V", "B", "N", "M"];
+
+
   const phrases = ['A penny saved is a penny earned', 'The early bird catches the worm', 'Actions speak louder than words', 'A stitch in time saves nine', 'Fortune favors the bold', 'When in Rome, do as the Romans', 'The pen is mightier than the sword', 'No man is an island', 'Hope springs eternal', 'Necessity is the mother of invention'];
 
 
-  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isModalOpen, setIssModalOpen] = useState(false);
 
   const [phraseData, setPhraseData] = useState(null)
   const [secretPhrase, setSecretPhrase] = useState('')
@@ -270,6 +275,27 @@ function App() {
     //setIsModalOpen(!isModalOpen);
   };
 
+  const selectLetter = (keyVal) => {
+    if (gameState.gameOver) return;
+    if(selectedInput === 'swap') {
+      if (keyVal === "ENTER") {
+        onEnterSwap();
+      } else if (keyVal === "DELETE") {
+        onBackspaceSwap();
+      } else {
+        onSelectLetterSwap(keyVal);
+      }
+    } else {
+      if (keyVal === "ENTER") {
+        onEnterPhrase();
+      } else if (keyVal === "DELETE") {
+        onBackspacePhrase();
+      } else {
+        onSelectLetterPhrase(keyVal);
+      }
+    }
+  };
+
   useEffect(() => {
     document.addEventListener("keydown", handleKeyboard);
 
@@ -283,48 +309,84 @@ function App() {
       
       <Navbar />
       {phraseData ? (
-        <div className="game">
-          <div className='game-row-1'>
-            <Encryption
+        <div>
+          <div className="game">
+            <div className='game-row-1'>
+              <Encryption
+                  encrypt={encrypt}
+                  encryptIndex={encryptIndex}
+              />
+            </div>
+
+            <div className="game-row-2">
+              <div className="game-column-1">
+                
+                <Swap 
+                  selectedInput={selectedInput}
+                  setSelectedInput={setSelectedInput}
+                  swapInput={swapInput}
+                />
+                <PhraseInput 
+                  selectedInput={selectedInput}
+                  setSelectedInput={setSelectedInput}
+                  secretPhrase={secretPhrase} 
+                  phraseInput={phraseInput}  
+                />
+                
+              </div>
+              <div className="game-column-2">
+                <Guesses 
+                  guesses={guesses}
+                />
+              </div>   
+            </div>
+
+            <div className="game-row-3">
+              <LetterHistogram 
                 encrypt={encrypt}
-                encryptIndex={encryptIndex}
-            />
+              /> 
+              <div className='plays-remaining-container'>
+                <p>Remaining:</p>
+                <h2></h2>
+              </div>
+            </div>
+            
+            
           </div>
 
-          <div className="game-row-2">
-            <div className="game-column-1">
-              
-              <Swap 
-                selectedInput={selectedInput}
-                setSelectedInput={setSelectedInput}
-                swapInput={swapInput}
-              />
-              <PhraseInput 
-                selectedInput={selectedInput}
-                setSelectedInput={setSelectedInput}
-                secretPhrase={secretPhrase} 
-                phraseInput={phraseInput}  
-              />
-              
+          <div className="keyboard" onKeyDown={handleKeyboard}>
+            <div className="line1">
+              {keys1.map((key) => {
+                return <div 
+                onClick={()=>selectLetter(key)}
+                className='key'>
+                  {key}
+                </div>
+              })}
             </div>
-            <div className="game-column-2">
-              <Guesses 
-                guesses={guesses}
-              />
-            </div>   
-          </div>
-
-          <div className="game-row-3">
-            <LetterHistogram 
-              encrypt={encrypt}
-            /> 
-            <div className='plays-remaining-container'>
-              <p>Remaining:</p>
-              <h2></h2>
+            <div className="line2">
+              {keys2.map((key) => {
+                return <div 
+                  onClick={()=>selectLetter(key)}
+                  className='key'>
+                    {key}
+                  </div>;
+              })}
+            </div>
+            <div className="line3">
+              <div className='key' id='big' onClick={()=>selectLetter('ENTER')}>Enter</div>
+              {keys3.map((key) => {
+                //<Key keyVal={key} disabled={disabledLetters.includes(key)} />;
+                return <div
+                  onClick={()=>selectLetter(key)}
+                  className='key'>
+                    {key}
+                  </div>
+              })}
+              <div className='key' id='big' onClick={()=>selectLetter('BACKSPACE')}>Backspace</div>
             </div>
           </div>
-          
-          
+           
         </div>
       ) : (
         <span className="loader"></span>
