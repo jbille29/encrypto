@@ -280,7 +280,7 @@ function App() {
     if(selectedInput === 'swap') {
       if (keyVal === "ENTER") {
         onEnterSwap();
-      } else if (keyVal === "DELETE") {
+      } else if (keyVal === "BACKSPACE") {
         onBackspaceSwap();
       } else {
         onSelectLetterSwap(keyVal);
@@ -288,7 +288,7 @@ function App() {
     } else {
       if (keyVal === "ENTER") {
         onEnterPhrase();
-      } else if (keyVal === "DELETE") {
+      } else if (keyVal === "BACKSPACE") {
         onBackspacePhrase();
       } else {
         onSelectLetterPhrase(keyVal);
@@ -309,8 +309,9 @@ function App() {
       
       <Navbar />
       {phraseData ? (
-        <div>
+        <div className="game-keyboard">
           <div className="game">
+            
             <div className='game-row-1'>
               <Encryption
                   encrypt={encrypt}
@@ -350,8 +351,7 @@ function App() {
                 <h2></h2>
               </div>
             </div>
-            
-            
+
           </div>
 
           <div className="keyboard" onKeyDown={handleKeyboard}>
