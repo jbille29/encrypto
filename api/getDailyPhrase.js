@@ -10,8 +10,10 @@ export default function handler(req, res) {
     const data = fs.readFileSync(filePath, 'utf8');
     const phrases = JSON.parse(data);
     
-    const dayOfYear = Math.floor((new Date() - new Date(new Date().getFullYear(), 0, 0)) / 1000 / 60 / 60 / 24);
+    //const dayOfYear = Math.floor((new Date() - new Date(new Date().getFullYear(), 0, 0)) / 1000 / 60 / 60 / 24);
+    const dayOfYear = 0
     const index = dayOfYear % phrases.length;
+    
     
     res.status(200).json(phrases[index]);
   } catch (error) {

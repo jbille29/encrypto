@@ -8,10 +8,7 @@ const PhraseInput = ({ selectedInput, setSelectedInput, secretPhrase, phraseInpu
   return (
     <div
       className='phrase-input-container'
-      onClick={()=>setSelectedInput('phrase')}
-      style ={{
-        border: selectedInput==='phrase' ? "blue 1px solid" : null 
-      }}>
+      onClick={()=>setSelectedInput('phrase')}>
     
       {secretPhraseArray.map((word, index) => (
         <div 

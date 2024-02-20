@@ -45,7 +45,34 @@ function generateMapping() {
   }
   
   // Example usage
-  const phrases = ["hello world", "the quick brown fox", "jumps over the lazy dog"];
+  const phrases = 
+  [
+    "how do you do",
+    "what's up",
+    "hello there",
+    "good day",
+    "how's it going",
+    "what's new",
+    "how are you",
+    "nice to meet",
+    "pleased to meet",
+    "greetings",
+    "see you soon",
+    "take care",
+    "goodbye",
+    "cheers",
+    "best wishes",
+    "good luck",
+    "safe travels",
+    "welcome",
+    "farewell",
+    "hi there",
+    "hey",
+    "yo",
+    "sup",
+    "good evening",
+    "good morning"
+  ];
   const encryptedPhrases = encryptPhrases(phrases);
   
   console.log(encryptedPhrases);

@@ -41,8 +41,8 @@ a:hover {
 
 body {
   margin: 0;
-  min-width: 320px;
   min-height: 100vh;
+  box-sizing: border-box;
 }
 
 h1 {
@@ -94,7 +94,6 @@ button:focus-visible {
 
   /* style */
   border-radius: 1rem;
-  
 }
 
 /* Top Navbar */
@@ -135,11 +134,30 @@ button:focus-visible {
   cursor: pointer;
 }
 
+/* Default styles for mobile devices */
 /* Game Container */
 .game-keyboard {
   display: flex;
   flex-direction: column;
   align-items: center;
+
+  /* dev */
+  background-color: lightblue;
+}
+
+
+/* Styles for tablets and above */
+@media (min-width: 768px) {
+  .game-keyboard {
+    background-color: lightcoral;
+  }
+}
+
+/* Styles for desktops and above */
+@media (min-width: 1024px) {
+  .game-keyboard {
+    background-color: lightgreen;
+  }
 }
 
 .game {
@@ -147,6 +165,7 @@ button:focus-visible {
   display: flex;
   flex-direction: column;
   margin-top: 1rem;
+  width: 80%;
   max-width: 550px;
 
   /* style */
@@ -158,7 +177,7 @@ button:focus-visible {
 
 .game-row-1 {
   margin-top: 1rem;
-  border: red solid 1px;
+ 
 }
 
 .game-row-2 {
@@ -167,7 +186,6 @@ button:focus-visible {
   justify-content: center;
   margin-top: 1rem;
 
-  border: red solid 1px;
 }
 
 .game-row-3 {
@@ -176,20 +194,12 @@ button:focus-visible {
   justify-content: center;
   margin: 1rem 0;
 
-  border: red solid 1px;
-}
-
-.game-column-1 {
-
-  border: blue solid 1px;
 }
 
 .game-column-2 {
-  width: 16rem;
+  
   background-color: var(--dark);
   border-radius: .25rem;
-
-  border: blue solid 1px;
 }
 
 /* Encryption */
@@ -219,8 +229,6 @@ button:focus-visible {
 
   /*style */
   padding: 1.5rem 1rem;
-
-  border: plum solid 1px;
 }
 
 .swap-0, .swap-1 {
@@ -228,8 +236,8 @@ button:focus-visible {
   display: flex;
   align-items: center; /* Aligns vertically center */
   justify-content: center; /* Aligns horizontally center, if needed */
-  height: 5rem;
-  width: 4rem;
+  height: 4rem;
+  width: 3rem;
 
   /* style */
   font-size: 5rem;
@@ -246,11 +254,12 @@ button:focus-visible {
 
 .swap-0, .swap-arrow-icon {
   /*layout */
-  margin-right: .9rem;
+  margin-right: .6rem;
 }
 
 .swap-arrow-icon {
   font-size: x-large;
+  margin-left: .6rem;
 }
 
 /* Phrase Input */
@@ -265,9 +274,6 @@ button:focus-visible {
   padding-left: 1rem;
   padding-bottom: 1rem;
   padding-top: .8rem;
-
-  border-radius: .25rem;
-  background-color: red;
 }
 
 .phrase-input-word {
@@ -300,7 +306,7 @@ button:focus-visible {
   /*layout*/
   display: flex;
   flex-direction: column;  
-  width: 7rem;
+  width: 5rem;
 }
 
 .guess-container h3, .guess {
@@ -345,7 +351,6 @@ button:focus-visible {
 /* Letter Historgram */
 .histogram-container {
   display: flex;
-  justify-content: flex-start;
   flex-wrap: wrap;
   width: 75%;
   min-height: 5rem;
@@ -354,21 +359,18 @@ button:focus-visible {
   /*style*/
   padding-top: .5rem;
   padding-left: 1rem;
-  border-radius: .25rem;
-
-  /*dev*/
-  background-color: #535bf2;
+  background-color: red;
 }
 
 .histogram-letter {
   display: flex;
   flex-direction: column-reverse;
   align-items: center;
-  margin-right: 1rem;
+  margin-right: .75rem;
   margin-bottom: .5rem;
 
   /*style*/
-  font-size: 1.2rem;
+  font-size: 1.1rem;
   font-family: 'Roboto Mono', monospace;
 }
 
@@ -382,9 +384,6 @@ button:focus-visible {
   justify-content: center;
 
   border-radius: .25rem;
-
-  /*dev*/
-  background-color: #474574;
 }
 
 .plays-remaining-container p {
@@ -474,7 +473,6 @@ button:focus-visible {
 .App {
   text-align: center;
   background-color: #121212;
-  width: 100vw;
   height: 100vh;
   /* display: flex; */
   color: white;
@@ -502,7 +500,7 @@ nav h1 {
 }
 
 .board {
-  width: 450px;
+  
   height: 550px;
   border: 1px solid black;
   display: flex;
@@ -542,7 +540,7 @@ nav h1 {
 }
 
 .keyboard {
-  width: 550px;
+  
   height: 300px;
   margin-top: 60px;
   background-color: green;
@@ -572,7 +570,8 @@ nav h1 {
 }
 
 .key {
-  width: 50px;
+  min-width: 15px;
+  max-width: 50px;
   height: 70px;
   margin: 5px;
   border-radius: 4px;
@@ -591,3 +590,4 @@ nav h1 {
 #disabled {
   background-color: #3a393c;
 }
+

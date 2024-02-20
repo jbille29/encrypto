@@ -7,16 +7,13 @@ import PhraseInput from './components/PhraseInput'
 import Guesses from './components/Guesses'
 import Navbar from './components/Navbar'
 import Modal from './components/Modal'
+import CircleProgress from './components/CircleProgress'
 
 function App() {
 
   const keys1 = ["Q", "W", "E", "R", "T", "Y", "U", "I", "O", "P"];
   const keys2 = ["A", "S", "D", "F", "G", "H", "J", "K", "L"];
   const keys3 = ["Z", "X", "C", "V", "B", "N", "M"];
-
-
-  const phrases = ['A penny saved is a penny earned', 'The early bird catches the worm', 'Actions speak louder than words', 'A stitch in time saves nine', 'Fortune favors the bold', 'When in Rome, do as the Romans', 'The pen is mightier than the sword', 'No man is an island', 'Hope springs eternal', 'Necessity is the mother of invention'];
-
 
   const [isModalOpen, setIssModalOpen] = useState(false);
 
@@ -39,7 +36,7 @@ function App() {
     gameOver: false,
     guessedPhrase: false,
   });
-  const [playsRemaining, setPlaysRemaining] = useState(3)
+  const [playsRemaining, setPlaysRemaining] = useState(8)
 
   useEffect(() => {
     async function fetchData() {
@@ -308,7 +305,9 @@ function App() {
     <div className='App'>
       
       <Navbar />
+      
       {phraseData ? (
+        
         <div className="game-keyboard">
           <div className="game">
             
@@ -347,13 +346,13 @@ function App() {
                 encrypt={encrypt}
               /> 
               <div className='plays-remaining-container'>
-                <p>Remaining:</p>
-                <h2></h2>
+                
+                <CircleProgress playsRemaining={playsRemaining}/>
               </div>
             </div>
 
           </div>
-
+          
           <div className="keyboard" onKeyDown={handleKeyboard}>
             <div className="line1">
               {keys1.map((key) => {
@@ -387,10 +386,13 @@ function App() {
             </div>
           </div>
            
+          
         </div>
+         
       ) : (
         <span className="loader"></span>
       )}
+      
 
       <div>
         <button onClick={toggleModal}>Open Modal</button>
