@@ -175,25 +175,17 @@ button:focus-visible {
   box-shadow: 2px 2px 7px rgba(0, 0, 0, 0.5);
 }
 
-.game-row-1 {
-  margin-top: 1rem;
- 
-}
-
 .game-row-2 {
   /* layout */
   display: flex;
-  justify-content: center;
-  margin-top: 1rem;
-
+  
 }
 
 .game-row-3 {
   /* layout */
   display: flex;
-  justify-content: center;
+  justify-content: flex-end;
   margin: 1rem 0;
-
 }
 
 .game-column-2 {
@@ -214,7 +206,7 @@ button:focus-visible {
 }
 
 .encryption-container h4 {
-  margin: 1rem 0;
+  margin: .5rem 0;
   margin-right: .04rem;
   font-size: x-large;
   font-family: 'Roboto Mono', monospace;
@@ -224,11 +216,11 @@ button:focus-visible {
 .swap-container {
   /*layout*/
   display: flex;
-  justify-content: center;
+ 
   align-items: center;
 
   /*style */
-  padding: 1.5rem 1rem;
+  margin-left: 1rem;
 }
 
 .swap-0, .swap-1 {
@@ -236,8 +228,8 @@ button:focus-visible {
   display: flex;
   align-items: center; /* Aligns vertically center */
   justify-content: center; /* Aligns horizontally center, if needed */
-  height: 4rem;
-  width: 3rem;
+  height: 3rem;
+  width: 2rem;
 
   /* style */
   font-size: 5rem;
@@ -266,7 +258,7 @@ button:focus-visible {
 .phrase-input-container {
   /*layout*/
   display: flex;
-  justify-content: center;
+ 
   align-items: center;
   flex-wrap: wrap;
   
@@ -288,8 +280,8 @@ button:focus-visible {
   display: flex;
   align-items: center; /* Aligns vertically center */
   justify-content: center; /* Aligns horizontally center, if needed */
-  height: 35px;
-  width: 35px;
+  height: 20px;
+  width: 20px;
 
   /*style*/
   border: var(--medium) 1px solid;
@@ -297,7 +289,7 @@ button:focus-visible {
 }
 
 .phrase-input-blocks p {
-  font-size: 1.6rem;
+  font-size: 1.1rem;
   padding-bottom: 2px;
 }
 
@@ -306,7 +298,8 @@ button:focus-visible {
   /*layout*/
   display: flex;
   flex-direction: column;  
-  width: 5rem;
+  
+  width: 6rem;
 }
 
 .guess-container h3, .guess {
@@ -352,14 +345,13 @@ button:focus-visible {
 .histogram-container {
   display: flex;
   flex-wrap: wrap;
-  width: 75%;
+  
   min-height: 5rem;
   margin-right: 1rem;
 
   /*style*/
   padding-top: .5rem;
   padding-left: 1rem;
-  background-color: red;
 }
 
 .histogram-letter {
@@ -374,26 +366,6 @@ button:focus-visible {
   font-family: 'Roboto Mono', monospace;
 }
 
-/* Plays Remaining */
-.plays-remaining-container {
-  /*layout*/
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  
-  justify-content: center;
-
-  border-radius: .25rem;
-}
-
-.plays-remaining-container p {
-  margin: 0;
-}
-
-.plays-remaining-container h2 {
-  margin: 0;
-  font-size: 3rem;
-}
 
 
 /* animation stuff */
@@ -524,26 +496,14 @@ nav h1 {
   font-size: 30px;
   font-weight: bolder;
   color: white;
-  font-family: Arial, Helvetica, sans-serif;
-}
-
-#correct {
-  background-color: #528d4e;
-}
-
-#almost {
-  background-color: #b49f39;
-}
-
-#error {
-  background-color: #3a393c;
+  font-family: 'Exo 2', sans-serif;
 }
 
 .keyboard {
-  
-  height: 300px;
-  margin-top: 60px;
-  background-color: green;
+  padding: 1rem 0;
+  margin-top: 1rem;
+  background-color: var(--darkest);
+  border-radius: 1rem;
 }
 
 .line1 {
@@ -570,17 +530,17 @@ nav h1 {
 }
 
 .key {
-  min-width: 15px;
-  max-width: 50px;
-  height: 70px;
+  min-width: 1.3rem;
+  max-width: 3rem;
+  height: 2rem;
   margin: 5px;
   border-radius: 4px;
   display: grid;
   place-items: center;
-  font-size: 20px;
-  background-color: grey;
-  color: white;
-  font-family: Arial, Helvetica, sans-serif;
+  font-size: .95rem;
+  background-color: var(--medium);
+  color: var(--light);
+  font-family: 'Exo 2', sans-serif;
   cursor: pointer;
 }
 

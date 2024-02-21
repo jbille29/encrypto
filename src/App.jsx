@@ -1,4 +1,5 @@
 import { useState, useEffect, useCallback } from 'react'
+import { BsBackspace } from "react-icons/bs";
 
 import LetterHistogram from './components/LetterHistogram'
 import Encryption from './components/Encryption'
@@ -8,6 +9,7 @@ import Guesses from './components/Guesses'
 import Navbar from './components/Navbar'
 import Modal from './components/Modal'
 import CircleProgress from './components/CircleProgress'
+
 
 function App() {
 
@@ -382,7 +384,11 @@ function App() {
                     {key}
                   </div>
               })}
-              <div className='key' id='big' onClick={()=>selectLetter('BACKSPACE')}>Backspace</div>
+              <div className='key' id='big' onClick={()=>selectLetter('BACKSPACE')}>
+                <BsBackspace
+                  
+                />
+              </div>
             </div>
           </div>
            
