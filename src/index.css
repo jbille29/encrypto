@@ -181,16 +181,17 @@ button:focus-visible {
   
 }
 
-.game-row-3 {
-  /* layout */
+.game-column-1 {
   display: flex;
-  justify-content: flex-end;
-  margin: 1rem 0;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  margin-right: 1rem;
 }
 
 .game-column-2 {
-  
-  background-color: var(--dark);
+  display: flex;
+  flex-direction: column;
   border-radius: .25rem;
 }
 
@@ -220,7 +221,7 @@ button:focus-visible {
   align-items: center;
 
   /*style */
-  margin-left: 1rem;
+ 
 }
 
 .swap-0, .swap-1 {
@@ -264,7 +265,7 @@ button:focus-visible {
   
   /*style */
   padding-left: 1rem;
-  padding-bottom: 1rem;
+  
   padding-top: .8rem;
 }
 
@@ -298,8 +299,11 @@ button:focus-visible {
   /*layout*/
   display: flex;
   flex-direction: column;  
-  
-  width: 6rem;
+  height: 9rem;
+  width: 100%;
+  margin-bottom: 1rem;
+  background-color: var(--dark);
+  border-radius:1rem;
 }
 
 .guess-container h3, .guess {

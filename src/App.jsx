@@ -334,24 +334,22 @@ function App() {
                   secretPhrase={secretPhrase} 
                   phraseInput={phraseInput}  
                 />
+                <LetterHistogram 
+                  encrypt={encrypt}
+                /> 
                 
               </div>
               <div className="game-column-2">
                 <Guesses 
                   guesses={guesses}
                 />
+                <div className='plays-remaining-container'>
+                  <CircleProgress 
+                    playsRemaining={playsRemaining}
+                  />
+                </div>
               </div>   
-            </div>
-
-            <div className="game-row-3">
-              <LetterHistogram 
-                encrypt={encrypt}
-              /> 
-              <div className='plays-remaining-container'>
-                
-                <CircleProgress playsRemaining={playsRemaining}/>
-              </div>
-            </div>
+            </div>             
 
           </div>
           
