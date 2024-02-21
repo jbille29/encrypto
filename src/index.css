@@ -43,6 +43,10 @@ body {
   margin: 0;
   min-height: 100vh;
   box-sizing: border-box;
+  -webkit-user-select: none; /* Safari */
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* IE/Edge */
+  user-select: none; /* Chrome, Opera, Safari */
 }
 
 h1 {
