@@ -93,8 +93,9 @@ button:focus-visible {
   /* layout */
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
   align-items: center;
-  min-height: 95vh;
+  min-height: 100vh;
 
   /* style */
   border-radius: 1rem;
@@ -109,7 +110,7 @@ button:focus-visible {
   width: 100%;
 
   /*style*/
-  padding: .5rem 0;
+  padding: .1rem 0;
 
   background-color: var(--dark);
   background-image: linear-gradient(to right, #745e8d, #81689d);
@@ -140,29 +141,7 @@ button:focus-visible {
 
 /* Default styles for mobile devices */
 /* Game Container */
-.game-keyboard {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
 
-  /* dev */
-  background-color: lightblue;
-}
-
-
-/* Styles for tablets and above */
-@media (min-width: 768px) {
-  .game-keyboard {
-    background-color: lightcoral;
-  }
-}
-
-/* Styles for desktops and above */
-@media (min-width: 1024px) {
-  .game-keyboard {
-    background-color: lightgreen;
-  }
-}
 
 .game {
   /* layout */
@@ -171,6 +150,7 @@ button:focus-visible {
   margin-top: 1rem;
   width: 80%;
   max-width: 550px;
+  aspect-ratio: 1/1;
 
   /* style */
   border-radius: 1rem;
@@ -179,24 +159,38 @@ button:focus-visible {
   box-shadow: 2px 2px 7px rgba(0, 0, 0, 0.5);
 }
 
+.game-row-1 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-grow: 1;
+}
+
 .game-row-2 {
   /* layout */
   display: flex;
-  
+  justify-content: space-around;
+  flex-grow:2;  
 }
 
 .game-column-1 {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: space-between;
+  justify-content: space-around;
   margin-right: 1rem;
+
+  flex-grow: 2;
 }
 
 .game-column-2 {
   display: flex;
   flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
   border-radius: .25rem;
+
+  flex-grow: 1;  
 }
 
 /* Encryption */
@@ -217,15 +211,30 @@ button:focus-visible {
   font-family: 'Roboto Mono', monospace;
 }
 
+/* Styles for tablets and above */
+@media (min-width: 768px) {
+  .encryption-container h4 {
+    font-size: xx-large;
+  }
+}
+
+/* Styles for desktops and above */
+@media (min-width: 1024px) {
+  .encryption-container h4 {
+    font-size: xx-large;
+  }
+}
+
 /* Swap Input */
 .swap-container {
   /*layout*/
   display: flex;
- 
+  width: 100%;
+  justify-content: center;
   align-items: center;
 
   /*style */
- 
+  
 }
 
 .swap-0, .swap-1 {
@@ -233,16 +242,35 @@ button:focus-visible {
   display: flex;
   align-items: center; /* Aligns vertically center */
   justify-content: center; /* Aligns horizontally center, if needed */
-  height: 3rem;
-  width: 2rem;
+  width: 3rem;
+  height: 4rem;
 
   /* style */
-  font-size: 5rem;
+  font-size: 4rem;
   padding: .5rem .8rem;
   border-radius: .25rem;
 
   /* dev */
   background-color: var(--medium);
+}
+
+/* Styles for tablets and above */
+@media (min-width: 768px) {
+  .swap-0, .swap-1 {
+   
+    width: 5rem;
+    height: 6rem;
+  
+    /* style */
+    font-size: 5rem;
+  }
+}
+
+/* Styles for desktops and above */
+@media (min-width: 1024px) {
+  .encryption-container h4 {
+    font-size: xx-large;
+  }
 }
 
 .swap-0 p, .swap-1 p {
@@ -263,7 +291,7 @@ button:focus-visible {
 .phrase-input-container {
   /*layout*/
   display: flex;
- 
+  justify-content: center;
   align-items: center;
   flex-wrap: wrap;
   
@@ -271,6 +299,7 @@ button:focus-visible {
   padding-left: 1rem;
   
   padding-top: .8rem;
+  
 }
 
 .phrase-input-word {
@@ -298,12 +327,17 @@ button:focus-visible {
   padding-bottom: 2px;
 }
 
+
+.plays-remaining {
+  flex: 1;
+}
+
 /* Guesses */
 .guess-container {
   /*layout*/
   display: flex;
   flex-direction: column;  
-  height: 9rem;
+  flex: 3;
   width: 100%;
   margin-bottom: 1rem;
   background-color: var(--dark);
@@ -372,6 +406,62 @@ button:focus-visible {
   /*style*/
   font-size: 1.1rem;
   font-family: 'Roboto Mono', monospace;
+}
+
+.histogram-tile { 
+  display: inline-block;
+  width: 12px;
+  height: 6px; 
+  margin: 2px 0; 
+  background-color: #0598CE;
+  border-radius: 25%;
+}
+
+/* Styles for tablets and above */
+@media (min-width: 410px) {
+  .phrase-input-blocks {
+    height: 25px;
+    width: 25px;
+  }
+  .encryption-container h4 {
+    font-size: xx-large;
+  }
+}
+
+/* Styles for tablets and above */
+@media (min-width: 550px) {
+  .phrase-input-blocks {
+    height: 35px;
+    width: 35px;
+  }
+  .phrase-input-blocks p {
+    padding-bottom: 2px;
+  }
+  .histogram-letter {
+ 
+    /*style*/
+    font-size: 1.9rem;
+    
+  }
+  .encryption-container h4 {
+    font-size: 2.5rem;
+  }
+  .histogram-tile { 
+    
+    width: 18px;
+    height: 12px; 
+    margin: 3px 0; 
+    background-color: #0598CE;
+    border-radius: 25%;
+  }
+  .swap-0, .swap-1 {
+   
+    width: 5rem;
+    height: 6rem;
+  
+    /* style */
+    font-size: 5rem;
+  }
 }
 
 
@@ -450,13 +540,6 @@ button:focus-visible {
 }
     
 
-.App {
-  text-align: center;
-  background-color: #121212;
-  height: 100vh;
-  /* display: flex; */
-  color: white;
-}
 
 body {
   padding: 0%;
@@ -508,6 +591,7 @@ nav h1 {
 }
 
 .keyboard {
+  max-width: 484px;
   padding: 1rem 0;
   margin-top: 1rem;
   background-color: var(--darkest);
@@ -538,8 +622,8 @@ nav h1 {
 }
 
 .key {
-  min-width: 1.3rem;
-  max-width: 3rem;
+  min-width: 1.5rem;
+  max-width: 4rem;
   height: 2rem;
   margin: 5px;
   border-radius: 4px;

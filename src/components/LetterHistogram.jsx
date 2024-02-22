@@ -9,7 +9,7 @@ const LetterHistogram = ({ encrypt }) => {
       {sortedKeys.map(letter => (
         <div className='histogram-letter'>
           {letter} {Array(frequency[letter]).fill(0).map((_, i) => (
-            <div key={i} style={{ display: 'inline-block', width: '12px', height: '4px', margin: '2px 0', backgroundColor: '#0598CE', borderRadius: "25%" }}></div>
+            <div key={i} className='histogram-tile'></div>
           ))}
         </div>
       ))}

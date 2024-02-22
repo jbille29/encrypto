@@ -309,8 +309,7 @@ function App() {
       <Navbar />
       
       {phraseData ? (
-        
-        <div className="game-keyboard">
+        <>
           <div className="game">
             
             <div className='game-row-1'>
@@ -389,20 +388,18 @@ function App() {
               </div>
             </div>
           </div>
-           
-          
-        </div>
+        </>
          
       ) : (
         <span className="loader"></span>
       )}
       
-
+      {/*
       <div>
         <button onClick={toggleModal}>Open Modal</button>
         <Modal isOpen={isModalOpen} toggleModal={toggleModal} />
       </div>
-      
+      */}
 
       {gameState.gameOver && (
         <div className='game-over'>
